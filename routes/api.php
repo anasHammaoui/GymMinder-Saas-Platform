@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVeficationController;
+use App\Http\Controllers\ForgetPassController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/email/verify/{id}/{hash}', [EmailVeficationController::class, 'verify'])
         ->middleware('signed')
         ->name('verification.verify');
+});
+// reset password
+Route::middleware('guest') -> group(function(){
+    Route::post('auth/login/forgot-password',[ForgetPassController::class, 'forgetPassword'])-> name("password.reset"); //send email
+Route::get('auth/login/forgot-password/{token}',function ($token){
+    return response() -> json(["token"=>$token],200);
+})-> name("password.reset"); //show form  with the token
+Route::post('auth/login/reset-password',[ForgetPassController::class, 'updatePassword'])-> name("password.update"); //update password
+
 });
 // protected auth routes
 Route::middleware('auth:sanctum')->group(function () {
