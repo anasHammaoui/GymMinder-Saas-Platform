@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVeficationController;
 use App\Http\Controllers\ForgetPassController;
+use App\Http\Controllers\OwnerProfile;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth/me', [AuthController::class, 'me']);
 });
 // profile
-Route::get('/profile', function () {
-    return response() -> json(["message" => "welcome"],200);
-})->middleware(['auth:sanctum', 'verified']);
+Route::get('/owner/profile',[OwnerProfile::class,'index'])->middleware(['auth:sanctum', 'verified','owner']);
+Route::post('/owner/profile',[OwnerProfile::class,'update'])->middleware(['auth:sanctum', 'verified','owner']);
