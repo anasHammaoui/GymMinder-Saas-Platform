@@ -38,5 +38,4 @@ Route::middleware('auth:sanctum')->group(function () {
 // profile
 Route::get('/profile', function () {
     return response() -> json(["message" => "welcome"],200);
-})->middleware(['auth', 'verified']);
-
+})->middleware(['auth:sanctum', 'verified']);
