@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('mobile_number');
             $table->string('email')->nullable();
-            $table->integer('age');
-            $table->date('registration_date');
+            $table -> enum('plan',['monthly','yearly']);
             $table->timestamps();
         });
     }

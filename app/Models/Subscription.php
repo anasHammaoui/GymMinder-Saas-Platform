@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
    use HasFactory;
-   protected $guard = [];
+   protected $guarded = [];
 
    public function owner(){
     return $this -> belongsTo(User::class);
