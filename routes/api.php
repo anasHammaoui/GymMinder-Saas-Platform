@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailVeficationController;
 use App\Http\Controllers\ForgetPassController;
+use App\Http\Controllers\MembersController;
 use App\Http\Controllers\OwnerProfile;
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/auth/me', [AuthController::class, 'me']);
 });
-// profile
+// **************************************Owner***************************
+// update owner profile
 Route::get('/owner/profile',[OwnerProfile::class,'index'])->middleware(['auth:sanctum', 'verified','owner']);
 Route::post('/owner/profile',[OwnerProfile::class,'update'])->middleware(['auth:sanctum', 'verified','owner']);
+// members routes
+Route::get("/owner/members",[MembersController::class, "index"]) -> middleware(['auth:sanctum','verified','owner']);
+Route::post('/owner/members',[MembersController::class, "store"]) -> Middleware(['auth:sanctum','verified','owner']);
+Route::put('/owner/members/{id}',[MembersController::class, "update"]) -> Middleware(['auth:sanctum','verified','owner']);
+Route::delete('/owner/members/{id}',[MembersController::class, "destroy"]) -> Middleware(['auth:sanctum','verified','owner']);

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
-    protected $guard = [];
+    protected $guarded = [];
 public function Owner(){
     return $this -> belongsTo(User::class);
 
