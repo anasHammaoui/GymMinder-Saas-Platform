@@ -6,8 +6,6 @@
 - Suivi des présences
 - Informations commerciales
 
-**Stack technique** : Laravel (backend) + Vue.js (frontend)
-
 ---
 
 ## Caractéristiques et Structure de la Plateforme
@@ -115,7 +113,6 @@
 
 ## Technologies
 **Front-End**:
-- Vue.js
 - Tailwind CSS
 - HTML/JS/CSS
 
