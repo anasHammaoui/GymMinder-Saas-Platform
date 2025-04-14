@@ -49,7 +49,7 @@
   - Édition des informations
   - Arrêt d'abonnement
   - Recherche AJAX
-  - Historique des paiements
+  - Voir payment status
 
 **Page de Présence** :
 - Tableau des membres
