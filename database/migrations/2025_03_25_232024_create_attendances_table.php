@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('member_id')->constrained()->onDelete('cascade');
             $table->date('date');
-            $table->boolean('present')->default(false);
+            $table->boolean('is_present')->default(false);
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table -> string("country") -> nullable();
             $table -> enum('gender',["male","female"]) -> nullable();
             $table -> text("profile_pic") -> nullable();
+            $table -> boolean("is_active") -> nullable();
             $table->rememberToken();
             $table->timestamps();
         });
